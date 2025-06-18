@@ -1,21 +1,21 @@
 ---
-title: "Penguins"
-author: "Jean Clipperton"
+title: "Super Cool Penguins"
+author: "Ben Kleinman"
 date: "`r Sys.Date()`"
 output: 
-  prettydoc::html_pretty:
-    theme: cayman
-    highlight: github
+  md_document
+  
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = F)
+library(prettydoc)
 # Note you might have to install prettydoc
 # install.packages("prettydoc")
 ```
 
 ## R Markdown
-Here we are going to learn a bit about penguins!
+Here we are going to learn a bit about penguins
 
 ## Penguins
 See below for averages on penguins. 
@@ -35,12 +35,24 @@ summarize(
 ```
 
 
-## Your work
-Summarize the dataset in a meaningful way (use AT LEAST two of the key functions from slide #12)
+## The Penguins of Torgersen 
+The following tracks the change in average body mass and bill length measured for the penguins of Torgersen from 2007 to 2009.
 
 ```{r}
+penguins %>%
+  filter(island == 	"Torgersen") %>%
+  group_by(year) %>%
+  summarize(body_mass = mean(body_mass_g, na.rm = TRUE)) 
 
 ```
+```{r}
+penguins %>%
+  filter(island == 	"Torgersen") %>%
+  group_by(year) %>%
+  summarize(ave_bill_lenght = mean(bill_length_mm, na.rm = TRUE)) 
+
+```
+
 
 # Final task
 
